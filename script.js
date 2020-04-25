@@ -57,7 +57,7 @@ function getWeather(cityName) {
     }
 
     // get the query url using the cityName variable, which refers to the user input
-    var queryURL = `http://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=266481e2660501477ece5aaa3260a249`
+    var queryURL = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=266481e2660501477ece5aaa3260a249`
     // use ajax method to request data from api
     $.ajax({
         url: queryURL,
@@ -68,7 +68,7 @@ function getWeather(cityName) {
         $(".city-display").text(`${city} (${moment().format("MM/DD/YYYY")})`);
         // create a display for the current icon
         var icon = response.list[0].weather[0].icon;
-        var iconDisplay = $(`<img src='http://openweathermap.org/img/w/${icon}.png'>`);
+        var iconDisplay = $(`<img src='https://openweathermap.org/img/w/${icon}.png'>`);
         $(".city-display").append(iconDisplay);
         // create display for current temperature
         var temp = (Math.floor((response.list[0].main.temp - 273.15) * 1.8) + 32);
@@ -81,7 +81,7 @@ function getWeather(cityName) {
         $(".wind-display").text(`Wind Speed: ${wind} MPH`);
         // below is the code for the forecast
         for( let i = 0; i< 5; i++){
-        $(`#cardDate${i}`).append(`<img src='http://openweathermap.org/img/w/${response.list[i*8].weather[0].icon}.png'>`);
+        $(`#cardDate${i}`).append(`<img src='https://openweathermap.org/img/w/${response.list[i*8].weather[0].icon}.png'>`);
         $(`#card-temperature${i}`).text("Temp: " + (Math.floor((response.list[i*8].main.temp - 273.15) * 1.8) + 32) + "°F");
         $(`#card-humidity${i}`).text("Humidity: " + response.list[i*8].main.humidity + "%");
         }
